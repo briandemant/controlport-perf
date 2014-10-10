@@ -1,6 +1,6 @@
 {
   "name": "controlport-perf",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "Lives in a service and provides an http endpoint for retrieving performance metrics",
   "keywords": [],
   "author": "Russ Frank <rf@uber.com>",
