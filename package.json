@@ -1,0 +1,52 @@
+{
+  "name": "controlport-perf",
+  "version": "1.3.0",
+  "description": "Lives in a service and provides an http endpoint for retrieving performance metrics",
+  "keywords": [],
+  "author": "Russ Frank <rf@uber.com>",
+  "repository": "git+ssh://git@github.com:uber/controlport-perf.git",
+  "main": "index",
+  "homepage": "https://github.com/uber/controlport-perf",
+  "bugs": {
+    "url": "https://github.com/uber/controlport-perf/issues",
+    "email": "rf@uber.com"
+  },
+  "bin": {
+    "controlport-perf": "bin/controlport-perf.js"
+  },
+  "dependencies": {
+    "body": "~4.4.2",
+    "colors": "~0.6.2",
+    "commander": "^2.2.0",
+    "error": "^4.1.1",
+    "heapdump": "^0.2.9",
+    "request": "^2.36.0",
+    "routes": "~1.1.0",
+    "safe-json-parse": "^2.0.0",
+    "send-data": "~3.2.4",
+    "v8-profiler": "^5.0.0"
+  },
+  "devDependencies": {
+    "tape": "^2.12.3",
+    "jshint": "^2.5.0",
+    "istanbul": "^0.2.7",
+    "tap-spec": "^0.1.8",
+    "pre-commit": "0.0.5"
+  },
+  "licenses": [],
+  "scripts": {
+    "test": "npm run jshint -s && NODE_ENV=test node test/index.js | tap-spec",
+    "fast-test": "NODE_ENV=test node test/index.js | tap-spec",
+    "jshint-pre-commit": "jshint --verbose $(git diff --cached --name-only | grep '\\.js$')",
+    "jshint": "jshint --verbose $(git ls-files | grep '\\.js$')",
+    "cover": "istanbul cover --report none --print detail test/index.js",
+    "view-cover": "istanbul report html && open ./coverage/index.html"
+  },
+  "engines": {
+    "node": ">= 0.10.x"
+  },
+  "pre-commit": [
+    "jshint-pre-commit",
+    "fast-test"
+  ]
+}
