@@ -2,10 +2,10 @@ var test = require('tape');
 var request = require('request');
 var fs = require('fs');
 
-var playdohPerf = require('../index.js');
+var controlportPerf = require('../index.js');
 
 test('profiler /profile route', function (assert) {
-  var server = playdohPerf().listen(4123);
+  var server = controlportPerf().listen(4123);
 
   request.post({
     url: 'http://localhost:4123/perf-profile',
@@ -31,7 +31,7 @@ test('profiler /profile route', function (assert) {
 test('profiler /heap route', function (assert) {
   var tmpdir = require('os').tmpDir();
 
-  var server = playdohPerf({path: tmpdir}).listen(4123);
+  var server = controlportPerf({path: tmpdir}).listen(4123);
 
   request.get('http://localhost:4123/perf-heap', function (err, res, body) {
     body = JSON.parse(body);
@@ -51,7 +51,7 @@ test('profiler /heap route', function (assert) {
 });
 
 test('profiler /invalid route', function (assert) {
-  var server = playdohPerf().listen(4124);
+  var server = controlportPerf().listen(4124);
 
   request.get('http://localhost:4124/invalid', function (err, res, body) {
     assert.equal(res.statusCode, 404);

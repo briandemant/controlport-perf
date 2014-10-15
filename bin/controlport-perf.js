@@ -22,7 +22,7 @@ var usage = [
   '',
   '-t, --time [secs]\tprofiling time, defaults to 5s',
   '-p, --prefix [prefix]\tcontrol port command prefix',
-  '-h, --host [name/ip:port(:worker)]\thost:port(:worker) where playdoh-perf is running, defaults to localhost:3202 with no worker. If worker is specified, we\'ll analyze that particular worker, if supported'
+  '-h, --host [name/ip:port(:worker)]\thost:port(:worker) where controlport-perf is running, defaults to localhost:3202 with no worker. If worker is specified, we\'ll analyze that particular worker, if supported'
 ].join('\n');
 
 function parseHost (host) {
@@ -106,7 +106,7 @@ function main (command) {
     .option('-p, --prefix [prefix]', '', '')
     .parse(process.argv);
 
-  // if we weren't passed a command, playdoh-perf is being run in standalone
+  // if we weren't passed a command, controlport-perf is being run in standalone
   // mode, so try to pull command from program.args; otherwise we got it
   // from minimist (args._[0] in exports below)
 
